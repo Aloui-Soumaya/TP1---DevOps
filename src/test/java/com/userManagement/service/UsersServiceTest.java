@@ -18,10 +18,11 @@ class UsersServiceTest {
 
     @Autowired
     private UsersService usersService;
+
     @Test
     void fetchUserByUsername() {
-        UsersEntity usersEntity = usersService.fetchUserByUsername("paul_pop");
-        assertEquals(usersEntity.getFirstName(), "paulous");
+        UsersEntity usersEntity = usersService.fetchUserByUsername("testUser");
+        assertEquals(usersEntity.getFirstName(), "Test");
 
     }
 
@@ -35,7 +36,7 @@ class UsersServiceTest {
     @Test
     void fetchAllUsers() {
         List<UsersEntity> usersEntityList = usersService.fetchAllUsers();
-        assertEquals(usersEntityList.size(),4);
-        assertEquals(usersEntityList.get(0).getFirstName(), "paulous");
+        assertEquals(usersEntityList.size(), 4);
+        assertEquals(usersEntityList.get(0).getFirstName(), "testUser");
     }
 }
