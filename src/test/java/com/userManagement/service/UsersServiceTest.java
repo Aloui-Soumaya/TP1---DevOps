@@ -36,7 +36,7 @@ class UsersServiceTest {
     @Test
     void fetchAllUsers() {
         List<UsersEntity> usersEntityList = usersService.fetchAllUsers();
-        assertEquals(usersEntityList.size(), 5);
+        assertEquals(usersEntityList.size(), 6);
         assertEquals(usersEntityList.get(0).getFirstName(), "testUser");
     }
 }
