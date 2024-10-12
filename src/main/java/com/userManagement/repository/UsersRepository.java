@@ -1,6 +1,6 @@
-package com.paulous.repository;
+package com.userManagement.repository;
 
-import com.paulous.entity.UsersEntity;
+import com.userManagement.entity.UsersEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

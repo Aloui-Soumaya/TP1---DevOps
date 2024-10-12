@@ -1,8 +1,8 @@
-package com.paulous.service;
+package com.userManagement.service;
 
-import com.paulous.entity.UsersEntity;
-import com.paulous.dto.UsersDto;
-import com.paulous.repository.UsersRepository;
+import com.userManagement.entity.UsersEntity;
+import com.userManagement.dto.UsersDto;
+import com.userManagement.repository.UsersRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

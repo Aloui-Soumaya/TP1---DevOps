@@ -1,7 +1,7 @@
-package com.paulous.service;
+package com.userManagement.service;
 
-import com.paulous.entity.UsersEntity;
-import com.paulous.dto.UsersDto;
+import com.userManagement.entity.UsersEntity;
+import com.userManagement.dto.UsersDto;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

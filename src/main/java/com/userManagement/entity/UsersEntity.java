@@ -1,4 +1,4 @@
-package com.paulous.entity;
+package com.userManagement.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

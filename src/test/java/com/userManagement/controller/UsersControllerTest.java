@@ -1,8 +1,8 @@
-package com.paulous.controller;
+package com.userManagement.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.paulous.dto.UsersDto;
-import com.paulous.repository.UsersRepository;
+import com.userManagement.dto.UsersDto;
+import com.userManagement.repository.UsersRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

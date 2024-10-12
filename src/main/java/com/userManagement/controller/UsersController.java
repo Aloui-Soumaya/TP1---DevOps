@@ -1,8 +1,8 @@
-package com.paulous.controller;
+package com.userManagement.controller;
 
-import com.paulous.dto.ResponseDto;
-import com.paulous.dto.UsersDto;
-import com.paulous.service.UsersService;
+import com.userManagement.dto.ResponseDto;
+import com.userManagement.dto.UsersDto;
+import com.userManagement.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
