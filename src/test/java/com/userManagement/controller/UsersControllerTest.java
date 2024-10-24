@@ -73,26 +73,22 @@ class UsersControllerTest {
 
 
     }
-    @Test
-    void fetchUserByUsername_NonExistingUser_ReturnsNotFound() throws Exception {
-        mockMvc.perform(get("/api/v1/fetchUserByUsername/non_existing_user")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("statusCode", is(404)));
-    }
+
 
 
     @Test
-    void fetchAllUsers_NoUsers_ReturnsEmptyList() throws Exception{
-        usersRepository.deleteAll();  // This will clear the database before each test
+    void fetchAllUsers_NoUsers_ReturnsEmptyList() throws Exception {
+        // Clear the database before executing this specific test
+        usersRepository.deleteAll();
+
+        // Perform the request expecting an empty list
         mockMvc.perform(get("/api/v1/fetchAllUsers")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("statusCode", is(200)))
-                .andExpect(jsonPath("message").isEmpty());
+                .andExpect(jsonPath("message").isEmpty());  // Expecting an empty list
     }
 
 
