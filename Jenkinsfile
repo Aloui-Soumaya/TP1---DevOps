@@ -15,7 +15,7 @@ pipeline {
                                     sh 'snyk test --org=my-org --token=$SNYK_TOKEN'
                                 }
                             }
-                        }
+        }               }
     }
     post {
 
