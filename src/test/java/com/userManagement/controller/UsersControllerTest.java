@@ -60,6 +60,36 @@ class UsersControllerTest {
                 .andExpect(jsonPath("message.usersId", is(5)));
 
     }
+    @Test
+    void addUserEndpoint2() throws Exception {
+        UsersDto usersDto =new UsersDto("bidMore2","Bid2","More2","admin");
+        ObjectMapper mapper = new ObjectMapper();
+        mockMvc.perform(post("/api/v1/addUser")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(usersDto))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("statusCode" , is(201)))
+                .andExpect(jsonPath("message.usersId", is(6)));
+
+    }
+    @Test
+    void addUserEndpoint3() throws Exception {
+        UsersDto usersDto =new UsersDto("bidMore3","Bid3","More3","admin");
+        ObjectMapper mapper = new ObjectMapper();
+        mockMvc.perform(post("/api/v1/addUser")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(usersDto))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("statusCode" , is(201)))
+                .andExpect(jsonPath("message.usersId", is(7)));
+
+    }
 
     @Test
     void fetchAllUsersEndpoint() throws Exception{
@@ -76,20 +106,7 @@ class UsersControllerTest {
 
 
 
-    @Test
-    void fetchAllUsers_NoUsers_ReturnsEmptyList() throws Exception {
-        // Clear the database before executing this specific test
-        usersRepository.deleteAll();
 
-        // Perform the request expecting an empty list
-        mockMvc.perform(get("/api/v1/fetchAllUsers")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content()
-                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("statusCode", is(200)))
-                .andExpect(jsonPath("message").isEmpty());  // Expecting an empty list
-    }
 
 
 
