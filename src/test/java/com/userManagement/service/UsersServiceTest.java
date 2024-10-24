@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -41,7 +40,7 @@ class UsersServiceTest {
         assertEquals(usersEntityList.get(0).getFirstName(), "paulous");
     }
     @Test
-    void addNewUser_SuccessfulAddition() throws Exception {
+    void addNewUser_SuccessfulAddition() {
         // Arrange
         UsersDto usersDto = new UsersDto("new_user", "John", "Doe", "admin");
         UsersEntity usersEntity = new UsersEntity();
