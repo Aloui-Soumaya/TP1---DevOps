@@ -10,10 +10,11 @@ pipeline {
             steps {
                    script {
                        // Run Snyk test
-                       echo "Installing Node.js and npm..."
+                       // Install Node.js and npm
+                                   echo "Installing Node.js and npm..."
                                    sh '''
-                                       curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-                                       apt-get install -y nodejs
+                                       curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
+                                       sudo apt-get install -y nodejs
                                    '''
 
                                    // Verify installation
@@ -23,7 +24,7 @@ pipeline {
 
                                    // Install Snyk
                                    echo "Installing Snyk CLI..."
-                                   sh 'npm install -g snyk'
+                                   sh 'sudo npm install -g snyk'
                        withCredentials([string(credentialsId: 'snyk_cred', variable: 'SNYK_TOKEN')]) {
                            sh "snyk test --token=$SNYK_TOKEN"
                        }
