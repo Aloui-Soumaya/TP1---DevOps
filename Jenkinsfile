@@ -45,8 +45,9 @@ pipeline {
             steps {
                    script {
                        // Run Snyk test
+                       sh 'npm install -g snyk'
                        withCredentials([string(credentialsId: 'snyk_cred', variable: 'SNYK_TOKEN')]) {
-                           sh 'snyk test --token=$SNYK_TOKEN'
+                           sh "snyk test --token=$SNYK_TOKEN"
                        }
                    }
                }
