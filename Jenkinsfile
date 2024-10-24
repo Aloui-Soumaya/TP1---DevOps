@@ -8,14 +8,15 @@ pipeline {
 
 
         stage('Snyk Security Test') {
-            steps {
-                            script {
-                                echo 'Running Snyk Security Test...'
-                                withCredentials([string(credentialsId: 'snyk_cred', variable: 'SNYK_TOKEN')]) {
-                                    sh 'snyk test --org=my-org --token=$SNYK_TOKEN'
-                                }
-                            }
-        }               }
+                  steps {
+                    echo 'Testing...'
+                    snykSecurity(
+                      snykInstallation: 'snyk',
+                      snykTokenId: '97082c80-c0a2-480e-a900-0930e7dc5924',
+                      // place other parameters here
+                    )
+                  }
+                }
     }
     post {
 
