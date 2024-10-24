@@ -5,6 +5,32 @@ pipeline {
         maven "maven"
     }
     stages {
+        stage("Compile") {
+            steps {
+                script {
+                    echo "Compiling..."
+                    sh "mvn clean compile -DskipTests"
+                }
+            }
+        }
+
+        stage("Build") {
+            steps {
+                script {
+                    echo "Building the JAR file..."
+                    sh "mvn package -DskipTests"
+                }
+            }
+        }
+
+        stage("Test") {
+            steps {
+                script {
+                    echo "Test ..."
+                    sh "mvn test -X"
+                }
+            }
+        }
         stage("Code Quality check"){
             steps{
                 script{
