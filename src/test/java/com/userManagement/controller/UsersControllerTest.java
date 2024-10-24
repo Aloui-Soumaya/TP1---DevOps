@@ -3,6 +3,7 @@ package com.userManagement.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.userManagement.dto.UsersDto;
 import com.userManagement.repository.UsersRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +73,31 @@ class UsersControllerTest {
 
 
     }
+    @Test
+    void fetchUserByUsername_NonExistingUser_ReturnsNotFound() throws Exception {
+        mockMvc.perform(get("/api/v1/fetchUserByUsername/non_existing_user")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("statusCode", is(404)));
+    }
+
+
+    @Test
+    void fetchAllUsers_NoUsers_ReturnsEmptyList() throws Exception{
+        usersRepository.deleteAll();  // This will clear the database before each test
+        mockMvc.perform(get("/api/v1/fetchAllUsers")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("statusCode", is(200)))
+                .andExpect(jsonPath("message").isEmpty());
+    }
+
+
+
+
+
+
 }

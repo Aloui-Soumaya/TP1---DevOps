@@ -29,6 +29,7 @@ public class UsersService {
     }
 
     public UsersEntity addNewUser(UsersDto usersDto){
+
         log.info("");
         UsersEntity usersEntity = new UsersEntity();
         usersEntity.setUserRole(usersDto.getUserRole());
