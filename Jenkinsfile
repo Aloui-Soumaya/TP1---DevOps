@@ -41,6 +41,18 @@ pipeline {
                 }
             }
         }
+    stage('Snyk Security Test') {
+        steps {
+            script {
+                echo "Running Snyk to check for vulnerabilities..."
+                withCredentials([string(credentialsId: 'snyk_cred')]) {
+                    // Run Snyk with the token for authentication
+                    sh 'snyk test --org=my-org --token=$snyk_cred'
+                }
+            }
+        }
+    }
+
     }
     post {
 
