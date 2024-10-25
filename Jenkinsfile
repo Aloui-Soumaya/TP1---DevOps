@@ -5,7 +5,7 @@ pipeline {
         maven "maven"
     }
     stages {
-        stage("Compile") {
+        /*stage("Compile") {
             steps {
                 script {
                     echo "Compiling..."
@@ -40,7 +40,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage('Snyk Security Test') {
             steps {
                 echo 'Testing...'
