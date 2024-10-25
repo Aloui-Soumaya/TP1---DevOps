@@ -8,15 +8,19 @@ pipeline {
 
 
         stage('Snyk Security Test') {
-                  steps {
-                    echo 'Testing...'
-                    snykSecurity(
-                      snykInstallation: 'snyk',
-                      snykTokenId: 'snyk_cred2',
-                      // place other parameters here
-                    )
-                  }
-                }
+                         steps {
+                           echo 'Testing...'
+                           script {
+                                echo 'Testing...'
+                               sh 'chmod +x ./mvnw'  // Add executable permissions to `mvnw`
+                           }
+                           snykSecurity(
+                             snykInstallation: 'snyk',
+                             snykTokenId: 'snyk_cred2',
+                             // place other parameters here
+                           )
+                         }
+                       }
     }
     post {
 
