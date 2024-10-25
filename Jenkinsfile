@@ -4,6 +4,11 @@ pipeline {
         jdk "jdk17"
         maven "maven"
     }
+     environment {
+            registry = "soumayaaloui/tp2_devops"
+            registryCredential = 'docker_hub'
+            dockerImage = ''
+     }
     stages {
         stage("Compile") {
             steps {
@@ -53,11 +58,26 @@ pipeline {
                 snykSecurity(
                     snykInstallation: 'snyk',
                     snykTokenId: 'snyk_cred2',
-                    failOnIssues: false,
-                    failOnError: false
                 )
             }
         }
+        stage('Building image') {
+                    steps {
+                        script {
+                            dockerImage = docker.build "${registry}:${BUILD_NUMBER}"
+                        }
+                    }
+                }
+
+                stage('Upload Image') {
+                    steps {
+                        script {
+                            docker.withRegistry('', registryCredential) {
+                                dockerImage.push()
+                            }
+                        }
+                    }
+                }
     }
     post {
 
