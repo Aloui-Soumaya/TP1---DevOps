@@ -11,8 +11,8 @@ pipeline {
                          steps {
                            echo 'Testing...'
                            script {
-                                echo 'Testing...'
-                               sh 'chmod +x ./mvnw'  // Add executable permissions to `mvnw`
+                                           sh 'mvn dependency:tree -DoutputType=dot --batch-mode --non-recursive --file="pom.xml"'
+
                            }
                            snykSecurity(
                              snykInstallation: 'snyk',
