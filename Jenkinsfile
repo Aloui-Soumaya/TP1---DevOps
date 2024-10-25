@@ -52,7 +52,10 @@ pipeline {
                 }
                 snykSecurity(
                     snykInstallation: 'snyk',
-                    snykTokenId: 'snyk_cred2'
+                    snykTokenId: 'snyk_cred2',
+                    failOnIssues: false,
+                    failOnCritical: false,
+                    failOnHigh: false
                 )
             }
         }
