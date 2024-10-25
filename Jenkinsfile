@@ -54,8 +54,7 @@ pipeline {
                     snykInstallation: 'snyk',
                     snykTokenId: 'snyk_cred2',
                     failOnIssues: false,
-                    failOnCritical: false,
-                    failOnHigh: false
+                    failOnError: false
                 )
             }
         }
