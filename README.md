@@ -22,7 +22,7 @@ After that we created a docker compose file. This Docker Compose file is used to
 
 # Test of the Spring Boot Application
 
-- Unit Test:
+## Unit Test:
 * fetchUserByUsername():
 Purpose: To verify that the service retrieves a user entity by its username correctly.
 Test Logic: This test calls the fetchUserByUsername method with a known username ("testUser") and asserts that the returned user's first name matches the expected value ("Test"). This ensures that the user retrieval functionality is working as intended.
@@ -33,6 +33,38 @@ Test Logic: This test invokes the addNewUser method with a new user DTO. It asse
 Purpose: To ensure that the service correctly retrieves a list of all users.
 Test Logic: This test checks that the fetchAllUsers method returns the expected number of user entities (4 in this scenario). Additionally, it verifies that the first user's first name matches the expected value ("testUser"). This confirms that the user retrieval functionality works correctly and that the list contains the appropriate data.
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/2527ce6f-8f5f-4dd2-a413-de48f65abed8)
+
+
+## Integration Test
+For integration tests, we need to test how various components (controllers, services and databases) work together in the application. Integration tests ensure that the entire flow from the API (controller) through the service layer and to the database or any external systems behaves as expected.
+- fetchUserByUsernameEndpoint(): This ensures that the controller correctly handles the GET request for fetching users and returns the appropriate data from the database.
+- addUserEndpoint(): This verifies that the controller properly processes the addition of new users, maps the request body correctly, and persists the data in the database.
+- fetchAllUsersEndpoint():This verifies that the endpoint correctly retrieves and returns all users from the database, and ensures that the returned data is accurate.
+
+![image](https://github.com/user-attachments/assets/a78c8727-078e-4b8b-871b-c9b9f5de8ee9)
+
+# Jenkins file :
+This Jenkins pipeline automates the build process for a Java project using Maven. It begins by defining the environment, specifying JDK 17 and Maven as the tools. The pipeline consists of four main stages:
+- Compile: This stage compiles the source code without running tests.
+- Build: In this stage, the project is packaged into a JAR file, again skipping tests.
+- Test: Here, all unit tests are executed with debug output enabled to help diagnose any issues.
+- Code Quality Check: This final stage runs a SonarQube analysis to assess code quality and sends the results to a specified SonarQube server. We specified the login secret and the SonarQube project that we created previously.
+- Vulnerability scanning : With Snyk
+- Build Docker image
+- Deploy Docker image in Docker Desktop
+  
+
+![image](https://github.com/user-attachments/assets/a3f702bf-27d1-4e71-8142-86092ba53830)
+![image](https://github.com/user-attachments/assets/2ae2440d-b5a1-45b5-a7cb-79d9a0fe64db)
+
+![image](https://github.com/user-attachments/assets/98b3027f-30e1-40d0-9173-92859ecd565d)
+
+
+![image](https://github.com/user-attachments/assets/bf00fbb5-c231-4de0-bd87-0db0b35f5c5f)
+
+
+
+
 
 
